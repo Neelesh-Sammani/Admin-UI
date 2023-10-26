@@ -2,12 +2,23 @@ import React from "react";
 import Fab from '@mui/material/Fab';
 import './pagination.css';
 
-function Pagination({ setFilteredData,setUserData, currentPage, totalPages, handlePageChange }) {
+function Pagination({ setSelectAll,currentItems,setFilteredData,setUserData, currentPage, totalPages, handlePageChange }) {
 
+ //Function to handle delete selected button
   const handleDeleteSelected = () => {
-    setFilteredData((prevUsers) => prevUsers.filter((user) => !user.isSelected));
-    setUserData((prevUsers) => prevUsers.filter((user) => !user.isSelected));
-  }
+    setSelectAll(false);
+    const selectedUserIds = currentItems
+      .filter((user) => user.isSelected)
+      .map((user) => user.id);
+  
+    setFilteredData((prevData) =>
+      prevData.filter((user) => !selectedUserIds.includes(user.id))
+    );
+  
+    setUserData((prevData) =>
+      prevData.filter((user) => !selectedUserIds.includes(user.id))
+    );
+  };
 
   return (
     <div className="pagination-container">
