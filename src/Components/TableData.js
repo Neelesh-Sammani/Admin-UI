@@ -1,12 +1,14 @@
 import React from 'react';
 import './TableData.css';
 import NoDataFound from './noData';
+import { Stack } from '@mui/material';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 const TableData = ({ isIndeterminate, selectAll, handleSelectAllChange, currentItems, handleRowClick, handleEditClick, handleDeleteIcon })=> {
+
   
   return (
-    <div>
+    <Stack>
       {currentItems.length === 0 ? (
         <NoDataFound />
       ) : (
@@ -20,7 +22,7 @@ const TableData = ({ isIndeterminate, selectAll, handleSelectAllChange, currentI
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody  style={{padding:'0.5rem'}}>
             {currentItems.map((user) => (
               <tr key={user.id} onClick={() => handleRowClick(user)} className={user.isSelected ? 'selected-row' : ''}>
                 <td>
@@ -51,7 +53,7 @@ const TableData = ({ isIndeterminate, selectAll, handleSelectAllChange, currentI
           </tbody>
         </table>
       )}
-    </div>
+    </Stack>
   );
 };
 

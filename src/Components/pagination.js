@@ -1,8 +1,11 @@
 import React from "react";
-import Fab from '@mui/material/Fab';
+import { Button } from "@mui/material";
 import './pagination.css';
+import { useSnackbar } from "notistack";
 
 function Pagination({ setSelectAll,currentItems,setFilteredData,setUserData, currentPage, totalPages, handlePageChange }) {
+
+  const { enqueueSnackbar } = useSnackbar();
 
  //Function to handle delete selected button
   const handleDeleteSelected = () => {
@@ -18,14 +21,19 @@ function Pagination({ setSelectAll,currentItems,setFilteredData,setUserData, cur
     setUserData((prevData) =>
       prevData.filter((user) => !selectedUserIds.includes(user.id))
     );
+
+    enqueueSnackbar(
+      "Selected users deleted.",
+      { variant: "success" }
+    );
   };
 
   return (
     <div className="pagination-container">
       <div className="delete-selected">
-        <Fab variant="extended" size="medium" onClick={handleDeleteSelected} style={{ backgroundColor: '#FA5F55', color: 'white' }}>
+        <Button variant="extended" size="medium" onClick={handleDeleteSelected} style={{ backgroundColor: '#FA5F55', color: 'white',borderRadius:'1.5rem'}}>
           Delete Selected
-        </Fab>
+        </Button>
       </div>
       <div className="pagination">
         <button

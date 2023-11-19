@@ -3,8 +3,10 @@ import Search from './search';
 import TableData from "./TableData";
 import Pagination from './pagination';
 import axios from 'axios';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress,Stack } from '@mui/material';
 import './AdminUI.css';
+import { useSnackbar } from "notistack";
+
 
 
 function AdminUI() {
@@ -20,6 +22,8 @@ function AdminUI() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of items to display per page
 
+  const { enqueueSnackbar } = useSnackbar();
+
 
   //Function to fetch the users data
   const getData = async () => {
@@ -30,6 +34,10 @@ function AdminUI() {
         setFilteredData(response.data);
         setLoading(false);
     } catch (error) {
+      enqueueSnackbar(
+        "Error fetching user data. Please try again later... Check that the backend is running, reachable, and returns valid JSON.",
+        { variant: "error" }
+      );
       console.error("Error fetching data:", error);
       setLoading(false);
     }
@@ -102,6 +110,10 @@ function AdminUI() {
       )
     );
 
+    enqueueSnackbar(
+      "changes updated",
+      { variant: "success" }
+    );
     setEditingUser(null); // Close the edit modal
   };
 
@@ -110,9 +122,13 @@ function AdminUI() {
     e.stopPropagation();
       setFilteredData((prevData) => prevData.filter((user) => user.id !== userId));
       setUserData((prevData) => prevData.filter((user) => user.id !== userId));
+      enqueueSnackbar(
+        "user Deleted",
+        { variant: "success" }
+      );
   };
 
-  const isIndeterminate = filteredData.some((user) => user.isSelected) && !selectAll;
+  let isIndeterminate = filteredData.some((user) => user.isSelected) && !selectAll;
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
@@ -148,7 +164,7 @@ function AdminUI() {
   
   return (
     <>
-    <div className='container'>
+    <Stack className='container'>
     <Search searchValue = {searchValue} handleSearch={handleSearch} />
     {loading ? ( 
           <div className="loading-container">
@@ -209,7 +225,7 @@ function AdminUI() {
           </div>
         </div>
       )}
-    </div>
+    </Stack>
     </>
   );
 }
