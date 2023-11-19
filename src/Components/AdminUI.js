@@ -193,6 +193,7 @@ function AdminUI() {
                 currentPage={currentPage}
                 totalPages={totalPages}
                 handlePageChange={handlePageChange}
+                setCurrentPage={setCurrentPage}
               />
             )}
           </>
