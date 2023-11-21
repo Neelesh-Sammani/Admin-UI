@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import './pagination.css';
 import { useSnackbar } from "notistack";
 
-function Pagination({ setSelectAll,currentItems,setFilteredData,setUserData, currentPage, totalPages, handlePageChange,setCurrentPage }) {
+function Pagination({ setSelectAll,currentItems,setFilteredData,setUserData, currentPage, totalPages, handlePageChange,setCurrentPage,selectAll }) {
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -22,7 +22,10 @@ function Pagination({ setSelectAll,currentItems,setFilteredData,setUserData, cur
       prevData.filter((user) => !selectedUserIds.includes(user.id))
     );
 
-    if(currentPage===totalPages){
+    // Check if all rows on the current page are selected for deletion
+    const allRowsOnCurrentPageSelected = currentItems.length === selectedUserIds.length;
+
+    if (allRowsOnCurrentPageSelected && currentPage===totalPages) {
       setCurrentPage(1);
     }
 

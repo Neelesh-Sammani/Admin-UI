@@ -45,6 +45,7 @@ function AdminUI() {
   
   useEffect(() => {
     getData(); // Fetch data when the component mounts
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -194,6 +195,8 @@ function AdminUI() {
                 totalPages={totalPages}
                 handlePageChange={handlePageChange}
                 setCurrentPage={setCurrentPage}
+                selectAll={selectAll}
+                userData={userData}
               />
             )}
           </>
