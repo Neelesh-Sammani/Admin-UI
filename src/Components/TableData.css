@@ -1,40 +1,46 @@
 table {
-    border-collapse: collapse;
-    width: 100%;
-    padding:10px;
-    margin: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  padding: 10px;
+  margin: 20px;
 }
 
-th, td {
-    border: none;
-    padding: 8px;
-    text-align: left;
+.checkbox{
+  width: 25px;
+  height: 25px;
 }
 
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+th,
+td {
+  border: none;
+  padding: 8px;
+  text-align: left;
 }
 
-tbody tr:hover{
-    background-color: #f2f2f2;
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-  .icon-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
+tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.selected-row {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 600px) {
+  table {
+    margin: 10px;
   }
-
-  .selected-row {
-    background-color: #f0f0f0;
-  }
-  
-  
-  @media (max-width: 600px) {
-    table {
-      margin: 10px;
-    }
-  }
+}

@@ -1,6 +1,5 @@
 .pagination-container {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     margin-bottom: 20px;
     padding-left: 20px;
@@ -68,6 +67,14 @@
       width: 25px;
       height:25px;
       font-size: 8px;
+    }
+
+  }
+
+  @media (max-width: 330px) {
+
+    .pagination-container{
+      margin-left: 50px;
     }
 
   }

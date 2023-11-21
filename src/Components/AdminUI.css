@@ -1,7 +1,9 @@
 .container{
   overflow: hidden;
-  /* width: auto; */
-  /* min-width: auto; */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .loading-container {
@@ -67,9 +69,21 @@
   cursor: pointer;
 }
 
-@media screen and (max-width:625px){
+@media screen and (min-width: 900px) {
+  .container {
+    padding: 0 45px;
+  }
+}
+
+@media screen and (max-width:720px){
   .container{
     overflow: visible;
-    /* width: min-content;*/
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    padding: 0 30px;
   }
 }

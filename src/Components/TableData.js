@@ -15,7 +15,7 @@ const TableData = ({ isIndeterminate, selectAll, handleSelectAllChange, currentI
         <table>
           <thead>
             <tr indeterminate={isIndeterminate}>
-              <th><input type="checkbox" checked={selectAll} onChange={handleSelectAllChange} /></th>
+              <th><input type="checkbox" className='checkbox' checked={selectAll} onChange={handleSelectAllChange} /></th>
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
@@ -28,6 +28,7 @@ const TableData = ({ isIndeterminate, selectAll, handleSelectAllChange, currentI
                 <td>
                   <input
                     type="checkbox"
+                    className='checkbox'
                     checked={user.isSelected}
                   />
                 </td>
@@ -39,13 +40,13 @@ const TableData = ({ isIndeterminate, selectAll, handleSelectAllChange, currentI
                     <img
                       src="/edit_icon.svg"
                       alt="Edit"
-                      width="16"
-                      height="16"
+                      width="25"
+                      height="25"
                       style={{ marginRight: '10px' }}
                     />
                   </button>
                   <button onClick={(e) => handleDeleteIcon(user.id, e)} className='icon-button'>
-                    <DeleteOutlinedIcon style={{ color: '#FF0000', width: 16, height: 16 }} />
+                    <DeleteOutlinedIcon style={{ color: '#FF0000', width: 25, height: 25 }} />
                   </button>
                 </td>
               </tr>
